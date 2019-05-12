@@ -36,12 +36,8 @@ variable "tags" {
   description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)"
 }
 
-variable "vpn_gateway_id" {
-  description = "The id of the VPN Gateway."
-}
-
-variable "customer_gateway_id" {
-  description = "The id of the Customer Gateway."
+variable "customer_ip_address" {
+  description = "The IP of the Customer Gateway."
 }
 
 variable "create_vpn_connection" {
