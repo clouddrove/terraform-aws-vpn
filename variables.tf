@@ -18,6 +18,24 @@ variable "organization" {
   description = "Organization (e.g. `bac`, `cd`)"
 }
 
+variable "delimiter" {
+  type        = "string"
+  default     = "-"
+  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+}
+
+variable "attributes" {
+  type        = "list"
+  default     = []
+  description = "Additional attributes (e.g. `1`)"
+}
+
+variable "tags" {
+  type        = "map"
+  default     = {}
+  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)"
+}
+
 variable "vpn_gateway_id" {
   description = "The id of the VPN Gateway."
 }

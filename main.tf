@@ -1,3 +1,13 @@
+module "label" {
+  source       = "git::https://github.com/clouddrove/terraform-lables.git"
+  organization = "${var.organization}"
+  name         = "${var.name}"
+  environment  = "${var.environment}"
+  delimiter    = "${var.delimiter}"
+  attributes   = "${var.attributes}"
+  tags         = "${var.tags}"
+}
+
 locals {
   preshared_key_provided                = "${length(var.tunnel1_preshared_key) > 0 && length(var.tunnel2_preshared_key) > 0}"
   preshared_key_not_provided            = "${!local.preshared_key_provided}"
@@ -18,12 +28,7 @@ resource "aws_vpn_connection" "default" {
   type                = "ipsec.1"
   static_routes_only  = "${var.vpn_connection_static_routes_only}"
 
-  tags = {
-    name         = "${var.name}"
-    environment  = "${var.environment}"
-    createdby    = "${var.createdby}"
-    organization = "${var.organization}"
-  }
+  tags = "${module.label.tags}"
 }
 
 resource "aws_vpn_gateway_attachment" "default" {
