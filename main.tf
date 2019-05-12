@@ -50,7 +50,7 @@ resource "aws_vpn_connection_route" "default" {
 }
 
 resource "aws_customer_gateway" "main" {
-  count          = "${var.create_vpn_connection && var.create_vpn_gateway_attachment ? 1 : 0}"
+  count      = "${var.create_vpn_connection && var.create_vpn_gateway_attachment ? 1 : 0}"
   bgp_asn    = 65000
   ip_address = "${var.customer_ip_address}"
   type       = "ipsec.1"
@@ -59,6 +59,6 @@ resource "aws_customer_gateway" "main" {
 }
 
 resource "aws_vpn_gateway" "vpn" {
-  count          = "${var.create_vpn_connection && var.create_vpn_gateway_attachment ? 1 : 0}"
-  tags = "${module.label.tags}"
+  count = "${var.create_vpn_connection && var.create_vpn_gateway_attachment ? 1 : 0}"
+  tags  = "${module.label.tags}"
 }
