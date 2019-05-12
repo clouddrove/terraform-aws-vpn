@@ -19,10 +19,10 @@ resource "aws_vpn_connection" "default" {
   static_routes_only  = "${var.vpn_connection_static_routes_only}"
 
   tags = {
-    Name         = "${var.Name}"
-    Environment  = "${var.Environment}"
-    CreatedBy    = "${var.CreatedBy}"
-    Organization = "${var.Organization}"
+    name         = "${var.name}"
+    environment  = "${var.environment}"
+    createdby    = "${var.createdby}"
+    organization = "${var.organization}"
   }
 }
 

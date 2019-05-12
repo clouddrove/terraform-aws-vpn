@@ -1,19 +1,19 @@
-variable "Name" {
+variable "name" {
   description = "Name  (e.g. `app` or `cluster`)"
   type        = "string"
 }
 
-variable "Environment" {
+variable "environment" {
   type        = "string"
   description = "Environment (e.g. `prod`, `dev`, `staging`)"
 }
 
-variable "CreatedBy" {
+variable "createdby" {
   type        = "string"
   description = "CreatedBy (e.g. `terraform`, `dev`, `devops`)"
 }
 
-variable "Organization" {
+variable "organization" {
   type        = "string"
   description = "Organization (e.g. `bac`, `cd`)"
 }
