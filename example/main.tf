@@ -5,5 +5,5 @@ module "vpn" {
   environment         = "test"
   createdby           = "Anmol"
   vpc_id              = "vpc-XXXXXXXXX"
-  customer_ip_address = "0.0.0.0/0"
+  customer_ip_address = "0.0.0.0"
 }
