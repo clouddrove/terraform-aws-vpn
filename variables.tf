@@ -13,9 +13,9 @@ variable "createdby" {
   description = "CreatedBy (e.g. `terraform`, `dev`, `devops`)"
 }
 
-variable "organization" {
+variable "application" {
   type        = "string"
-  description = "Organization (e.g. `bac`, `cd`)"
+  description = "Application (e.g. `bac`, `cd`)"
 }
 
 variable "delimiter" {

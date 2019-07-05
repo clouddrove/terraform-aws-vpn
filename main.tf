@@ -1,13 +1,9 @@
 module "label" {
-  source       = "github.com/clouddrove/terraform-lables"
-  organization = "${var.organization}"
-  name         = "${var.name}"
-  environment  = "${var.environment}"
-  delimiter    = "${var.delimiter}"
-  attributes   = "${var.attributes}"
-  tags         = "${var.tags}"
+  source      = "git::https://github.com/clouddrove/terraform-lables.git?ref=tags/0.11.0"
+  name        = "${var.name}"
+  application = "${var.application}"
+  environment = "${var.environment}"
 }
-
 locals {
   preshared_key_provided                = "${length(var.tunnel1_preshared_key) > 0 && length(var.tunnel2_preshared_key) > 0}"
   preshared_key_not_provided            = "${!local.preshared_key_provided}"

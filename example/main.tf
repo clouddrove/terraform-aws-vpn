@@ -1,7 +1,7 @@
 module "vpn" {
   source              = "./../../terraform-aws-vpn"
   name                = "vpn"
-  organization        = "Clouddrove"
+  application        = "Clouddrove"
   environment         = "test"
   createdby           = "Anmol"
   vpc_id              = "vpc-XXXXXXXXX"
