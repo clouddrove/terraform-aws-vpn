@@ -27,7 +27,7 @@ locals {
   enable_tunner_with_preshared_key_only = local.internal_cidr_not_provided && local.preshared_key_provided
 }
 
-#Module   VPN  Connection
+#Module       VPN Connection
 #Description: Manages an EC2 VPN connection. These objects can be connected to customer gateways,
 #             and allow you to establish tunnels between your network and Amazon
 resource "aws_vpn_connection" "default" {
@@ -37,10 +37,10 @@ resource "aws_vpn_connection" "default" {
   customer_gateway_id = aws_customer_gateway.main[0].id
   type                = "ipsec.1"
   static_routes_only  = var.vpn_connection_static_routes_only
-  tags = module.labels.tags
+  tags                = module.labels.tags
 }
 
-#Module   Gateway Attachment
+#Module       Gateway Attachment
 #Description: Provides a Virtual Private Gateway attachment resource,
 #             allowing for an existing hardware VPN gateway to be attached and/or detached from a VPC.
 resource "aws_vpn_gateway_attachment" "default" {
@@ -49,7 +49,7 @@ resource "aws_vpn_gateway_attachment" "default" {
   vpn_gateway_id = aws_vpn_gateway.vpn[0].id
 }
 
-#Module   Gateway Route Propagation
+#Module       Gateway Route Propagation
 #Description: Requests automatic route propagation between a VPN gateway and a route table.
 resource "aws_vpn_gateway_route_propagation" "private_subnets_vpn_routing" {
   count          = var.enable_vpn_connection ? var.vpc_subnet_route_table_count : 0
@@ -72,7 +72,7 @@ resource "aws_customer_gateway" "main" {
   bgp_asn    = 65000
   ip_address = var.customer_ip_address
   type       = "ipsec.1"
-  tags = module.labels.tags
+  tags       = module.labels.tags
 }
 
 #Module       AWS VPN Gateway

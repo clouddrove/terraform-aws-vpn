@@ -29,12 +29,12 @@ module "public_subnets" {
 }
 
 
-//module "vpn" {
-//  source              = "./../"
-//  name        = "vpn"
-//  application = "clouddrove"
-//  environment = "test"
-//  label_order = ["environment", "name", "application"]
-//  vpc_id              = module.vpc.vpc_id
-//  customer_ip_address = "115.160.246.74"
-//}
+module "vpn" {
+  source              = "./../"
+  name                = "vpn"
+  application         = "clouddrove"
+  environment         = "test"
+  label_order         = ["environment", "name", "application"]
+  vpc_id              = module.vpc.vpc_id
+  customer_ip_address = "115.160.246.74"
+}
