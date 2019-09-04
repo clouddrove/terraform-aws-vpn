@@ -110,6 +110,6 @@ variable "tunnel2_preshared_key" {
 variable "enable_vpn_gateway_attachment" {
   type        = bool
   default     = true
-  description = "Set to false to prevent attachment of the vGW to the VPC"
+  description = "Set to false to prevent attachment of the vGW to the VPC."
 }
 

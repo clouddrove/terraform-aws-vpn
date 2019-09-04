@@ -19,14 +19,14 @@ output "customer_gateway_id" {
   value = concat(
     aws_customer_gateway.main.*.id
   )[0]
-  description = "The ID of the VPN Connection Route"
+  description = "The ID of the VPN Connection Route."
 }
 
 output "vpn_gateway_id" {
   value = concat(
     aws_vpn_gateway.vpn.*.id
   )[0]
-  description = "The ID of the VPN gateway"
+  description = "The ID of the VPN gateway."
 }
 
 output "tags" {

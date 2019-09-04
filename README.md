@@ -77,7 +77,7 @@ Here is an example of how you can use this module in your inventory structure:
       application         = "clouddrove"
       environment         = "test"
       label_order         = ["environment", "name", "application"]
-      vpc_id              = module.vpc.vpc_id
+      vpc_id              = "vpc-xxxxxxxxxx"
       customer_ip_address = "115.160.246.74"
     }
   ```
@@ -96,7 +96,7 @@ Here is an example of how you can use this module in your inventory structure:
 | customer_ip_address | The IP of the Customer Gateway. | string | - | yes |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | string | `-` | no |
 | enable_vpn_connection | Set to false to prevent the creation of a VPN Connection. | bool | `true` | no |
-| enable_vpn_gateway_attachment | Set to false to prevent attachment of the vGW to the VPC | bool | `true` | no |
+| enable_vpn_gateway_attachment | Set to false to prevent attachment of the vGW to the VPC. | bool | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
 | label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
 | name | Name  (e.g. `app` or `cluster`). | string | `` | no |
@@ -115,11 +115,11 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description |
 |------|-------------|
-| customer_gateway_id | The ID of the VPN Connection Route |
+| customer_gateway_id | The ID of the VPN Connection Route. |
 | gateway_attachment_id | The ID of the Gateway Attachment. |
 | tags | A mapping of tags to assign to the resource. |
 | vpn_connection_id | The ID of the VPN Connection. |
-| vpn_gateway_id | The ID of the VPN gateway |
+| vpn_gateway_id | The ID of the VPN gateway. |
 
 
 
