@@ -30,7 +30,7 @@ module "public_subnets" {
 
 
 module "vpn" {
-  source              = "./../"
+  source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git"
   name                = "vpn"
   application         = "clouddrove"
   environment         = "test"
