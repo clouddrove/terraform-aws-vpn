@@ -1,98 +1,115 @@
+#Module      : LABEL
+#Description : Terraform label module variables.
 variable "name" {
-  description = "Name  (e.g. `app` or `cluster`)"
-  type        = "string"
-}
-
-variable "environment" {
-  type        = "string"
-  description = "Environment (e.g. `prod`, `dev`, `staging`)"
-}
-
-variable "createdby" {
-  type        = "string"
-  description = "CreatedBy (e.g. `terraform`, `dev`, `devops`)"
+  type        = string
+  default     = ""
+  description = "Name  (e.g. `app` or `cluster`)."
 }
 
 variable "application" {
-  type        = "string"
-  description = "Application (e.g. `bac`, `cd`)"
+  type        = string
+  default     = ""
+  description = "Application (e.g. `cd` or `clouddrove`)."
 }
 
-variable "delimiter" {
-  type        = "string"
-  default     = "-"
-  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+variable "environment" {
+  type        = string
+  default     = ""
+  description = "Environment (e.g. `prod`, `dev`, `staging`)."
+}
+
+variable "label_order" {
+  type        = list
+  default     = []
+  description = "Label order, e.g. `name`,`application`."
 }
 
 variable "attributes" {
-  type        = "list"
+  type        = list
   default     = []
-  description = "Additional attributes (e.g. `1`)"
+  description = "Additional attributes (e.g. `1`)."
+}
+
+variable "delimiter" {
+  type        = string
+  default     = "-"
+  description = "Delimiter to be used between `organization`, `environment`, `name` and `attributes`."
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map
   default     = {}
-  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)"
+  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
 }
 
 variable "customer_ip_address" {
+  type        = string
   description = "The IP of the Customer Gateway."
 }
 
-variable "create_vpn_connection" {
-  description = "Set to false to prevent the creation of a VPN Connection."
+variable "enable_vpn_connection" {
+  type        = bool
   default     = true
+  description = "Set to false to prevent the creation of a VPN Connection."
 }
 
 variable "vpc_id" {
+  type        = string
   description = "The id of the VPC where the VPN Gateway lives."
 }
 
 variable "vpc_subnet_route_table_ids" {
-  description = "The ids of the VPC subnets for which routes from the VPN Gateway will be propagated."
-  type        = "list"
+  type        = list(string)
   default     = []
+  description = "The ids of the VPC subnets for which routes from the VPN Gateway will be propagated."
 }
 
 variable "vpc_subnet_route_table_count" {
-  description = "The number of subnet route table ids being passed in via `vpc_subnet_route_table_ids`."
+  type        = string
   default     = 0
+  description = "The number of subnet route table ids being passed in via `vpc_subnet_route_table_ids`."
 }
 
 variable "vpn_connection_static_routes_only" {
-  description = "Set to true for the created VPN connection to use static routes exclusively (only if `create_vpn_connection = true`). Static routes must be used for devices that don't support BGP."
+  type        = bool
   default     = false
+  description = "Set to true for the enabled VPN connection to use static routes exclusively (only if `enable_vpn_connection = true`). Static routes must be used for devices that don't support BGP."
 }
 
 variable "vpn_connection_static_routes_destinations" {
-  description = "List of CIDRs to be used as destination for static routes (used with `vpn_connection_static_routes_only = true`). Routes to destinations set here will be propagated to the routing tables of the subnets defined in `vpc_subnet_route_table_ids`."
-  type        = "list"
+  type        = list(string)
   default     = []
+  description = "List of CIDRs to be used as destination for static routes (used with `vpn_connection_static_routes_only = true`). Routes to destinations set here will be propagated to the routing tables of the subnets defined in `vpc_subnet_route_table_ids`."
 }
 
 variable "tunnel1_inside_cidr" {
-  description = "The CIDR block of the inside IP addresses for the first VPN tunnel."
+  type        = string
   default     = ""
+  description = "The CIDR block of the inside IP addresses for the first VPN tunnel."
 }
 
 variable "tunnel2_inside_cidr" {
-  description = "The CIDR block of the inside IP addresses for the second VPN tunnel."
+  type        = string
   default     = ""
+  description = "The CIDR block of the inside IP addresses for the second VPN tunnel."
 }
 
 variable "tunnel1_preshared_key" {
-  description = "The preshared key of the first VPN tunnel."
+  type        = string
   default     = ""
+  description = "The preshared key of the first VPN tunnel."
 }
 
 variable "tunnel2_preshared_key" {
-  description = "The preshared key of the second VPN tunnel."
+  type        = string
   default     = ""
+  description = "The preshared key of the second VPN tunnel."
 }
 
 #Attachment can be already managed by the terraform-aws-vpc module by using the enable_vpn_gateway variable
-variable "create_vpn_gateway_attachment" {
-  description = "Set to false to prevent attachment of the vGW to the VPC"
+variable "enable_vpn_gateway_attachment" {
+  type        = bool
   default     = true
+  description = "Set to false to prevent attachment of the vGW to the VPC"
 }
+
