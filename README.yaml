@@ -36,7 +36,7 @@ usage : |-
   ### Simple Example
   Here is an example of how you can use this module in your inventory structure:
     ```hcl
-    module "vpc" {
+    module "vpn" {
         source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git"
         name                = "vpn"
         application         = "clouddrove"
