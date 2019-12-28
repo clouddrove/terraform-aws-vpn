@@ -72,7 +72,7 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
   ```hcl
   module "vpn" {
-      source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git"
+      source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git?ref=tags/0.12.1"
       name                = "vpn"
       application         = "clouddrove"
       environment         = "test"
