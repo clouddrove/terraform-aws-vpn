@@ -30,11 +30,11 @@ module "public_subnets" {
 
 
 module "vpn" {
-  source              = "./../"
-  name                = "vpn"
-  application         = "clouddrove"
-  environment         = "test"
-  label_order         = ["environment", "application", "name"]
+  source      = "./../"
+  name        = "vpn"
+  application = "clouddrove"
+  environment = "test"
+  label_order = ["environment", "application", "name"]
 
   vpc_id              = module.vpc.vpc_id
   customer_ip_address = "115.160.246.74"
