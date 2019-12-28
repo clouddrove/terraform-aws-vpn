@@ -14,7 +14,7 @@ module "vpc" {
 }
 
 module "public_subnets" {
-  source = "git::https://github.com/clouddrove/terraform-aws-subnet.git?ref=tags/0.12.3"
+  source = "git::https://github.com/clouddrove/terraform-aws-subnet.git?ref=tags/0.12.4"
 
   name        = "public-subnet"
   application = "clouddrove"
@@ -30,11 +30,12 @@ module "public_subnets" {
 
 
 module "vpn" {
-  source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git?ref=tags/0.12.0"
+  source              = "./../"
   name                = "vpn"
   application         = "clouddrove"
   environment         = "test"
   label_order         = ["environment", "application", "name"]
+
   vpc_id              = module.vpc.vpc_id
   customer_ip_address = "115.160.246.74"
 }
