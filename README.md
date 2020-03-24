@@ -38,7 +38,7 @@
 <hr>
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are working towards stratergies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
+We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
 
 This module is basically combination of [Terraform open source](https://www.terraform.io/) and includes automatation tests and examples. It also helps to create and improve your infrastructure with minimalistic code instead of maintaining the whole infrastructure code yourself.
 
@@ -72,7 +72,7 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
   ```hcl
   module "vpn" {
-      source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git?ref=tags/0.12.1"
+      source              = "git::https://github.com/clouddrove/terraform-aws-vpn.git?ref=tags/0.12.5"
       name                = "vpn"
       application         = "clouddrove"
       environment         = "test"
@@ -91,35 +91,38 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| application | Application (e.g. `cd` or `clouddrove`). | string | `` | no |
-| attributes | Additional attributes (e.g. `1`). | list | `<list>` | no |
-| customer_ip_address | The IP of the Customer Gateway. | string | - | yes |
-| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | string | `-` | no |
-| enable_vpn_connection | Set to false to prevent the creation of a VPN Connection. | bool | `true` | no |
-| enable_vpn_gateway_attachment | Set to false to prevent attachment of the vGW to the VPC. | bool | `true` | no |
-| environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
-| label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| name | Name  (e.g. `app` or `cluster`). | string | `` | no |
-| tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | map | `<map>` | no |
-| tunnel1_inside_cidr | The CIDR block of the inside IP addresses for the first VPN tunnel. | string | `` | no |
-| tunnel1_preshared_key | The preshared key of the first VPN tunnel. | string | `` | no |
-| tunnel2_inside_cidr | The CIDR block of the inside IP addresses for the second VPN tunnel. | string | `` | no |
-| tunnel2_preshared_key | The preshared key of the second VPN tunnel. | string | `` | no |
-| vpc_id | The id of the VPC where the VPN Gateway lives. | string | - | yes |
-| vpc_subnet_route_table_count | The number of subnet route table ids being passed in via `vpc_subnet_route_table_ids`. | string | `0` | no |
-| vpc_subnet_route_table_ids | The ids of the VPC subnets for which routes from the VPN Gateway will be propagated. | list(string) | `<list>` | no |
-| vpn_connection_static_routes_destinations | List of CIDRs to be used as destination for static routes (used with `vpn_connection_static_routes_only = true`). Routes to destinations set here will be propagated to the routing tables of the subnets defined in `vpc_subnet_route_table_ids`. | list(string) | `<list>` | no |
-| vpn_connection_static_routes_only | Set to true for the enabled VPN connection to use static routes exclusively (only if `enable_vpn_connection = true`). Static routes must be used for devices that don't support BGP. | bool | `false` | no |
+| application | Application \(e.g. `cd` or `clouddrove`\). | string | `""` | no |
+| attributes | Additional attributes \(e.g. `1`\). | list | `<list>` | no |
+| customer\_ip\_address | The IP of the Customer Gateway. | string | n/a | yes |
+| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | string | `"-"` | no |
+| enable\_vpn\_connection | Set to false to prevent the creation of a VPN Connection. | bool | `"true"` | no |
+| enable\_vpn\_gateway\_attachment | Set to false to prevent attachment of the vGW to the VPC. | bool | `"true"` | no |
+| environment | Environment \(e.g. `prod`, `dev`, `staging`\). | string | `""` | no |
+| label\_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
+| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | string | `"anmol@clouddrove.com"` | no |
+| name | Name  \(e.g. `app` or `cluster`\). | string | `""` | no |
+| tags | Additional tags \(e.g. map\(`BusinessUnit`,`XYZ`\). | map | `<map>` | no |
+| tunnel1\_inside\_cidr | The CIDR block of the inside IP addresses for the first VPN tunnel. | string | `""` | no |
+| tunnel1\_preshared\_key | The preshared key of the first VPN tunnel. | string | `""` | no |
+| tunnel2\_inside\_cidr | The CIDR block of the inside IP addresses for the second VPN tunnel. | string | `""` | no |
+| tunnel2\_preshared\_key | The preshared key of the second VPN tunnel. | string | `""` | no |
+| vpc\_id | The id of the VPC where the VPN Gateway lives. | string | n/a | yes |
+| vpc\_subnet\_route\_table\_count | The number of subnet route table ids being passed in via `vpc\_subnet\_route\_table\_ids`. | string | `"0"` | no |
+| vpc\_subnet\_route\_table\_ids | The ids of the VPC subnets for which routes from the VPN Gateway will be propagated. | list(string) | `<list>` | no |
+| vpn\_connection\_static\_routes\_destinations | List of CIDRs to be used as destination for static routes \(used with `vpn\_connection\_static\_routes\_only = true`\). Routes to destinations set here will be propagated to the routing tables of the subnets defined in `vpc\_subnet\_route\_table\_ids`. | list(string) | `<list>` | no |
+| vpn\_connection\_static\_routes\_only | Set to true for the enabled VPN connection to use static routes exclusively \(only if `enable\_vpn\_connection = true`\). Static routes must be used for devices that don't support BGP. | bool | `"false"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| customer_gateway_id | The ID of the VPN Connection Route. |
-| gateway_attachment_id | The ID of the Gateway Attachment. |
+| customer\_gateway\_id | The ID of the VPN Connection Route. |
+| gateway\_attachment\_id | The ID of the Gateway Attachment. |
 | tags | A mapping of tags to assign to the resource. |
-| vpn_connection_id | The ID of the VPN Connection. |
-| vpn_gateway_id | The ID of the VPN gateway. |
+| vpn\_connection\_id | The ID of the VPN Connection. |
+| vpn\_gateway\_id | The ID of the VPN gateway. |
+
+
 
 
 ## Testing
