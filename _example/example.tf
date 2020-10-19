@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "git::https://github.com/clouddrove/terraform-aws-vpc.git?ref=tags/0.13.0"
+  source      = "clouddrove/vpc/aws"
+  version     = "0.13.0"
 
   name        = "vpc"
   application = "clouddrove"
@@ -14,7 +15,8 @@ module "vpc" {
 }
 
 module "public_subnets" {
-  source = "git::https://github.com/clouddrove/terraform-aws-subnet.git?ref=tags/0.12.4"
+  source      = "clouddrove/subnet/aws"
+  version     = "0.13.0"
 
   name        = "public-subnet"
   application = "clouddrove"
