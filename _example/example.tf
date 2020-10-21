@@ -28,6 +28,7 @@ module "public_subnets" {
   cidr_block         = module.vpc.vpc_cidr_block
   type               = "public"
   igw_id             = module.vpc.igw_id
+  ipv6_cidr_block    = false
 }
 
 
