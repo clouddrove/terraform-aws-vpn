@@ -4,25 +4,18 @@ provider "aws" {
 
 module "vpc" {
   source  = "clouddrove/vpc/aws"
-  version = "0.13.0"
+  version = "0.14.0"
 
   name        = "vpc"
-  application = "clouddrove"
-  environment = "test"
-  label_order = ["environment", "application", "name"]
-
   cidr_block = "172.16.0.0/16"
 }
 
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "0.13.0"
+  version = "0.14.0"
 
   name        = "public-subnet"
-  application = "clouddrove"
-  environment = "test"
-  label_order = ["environment", "application", "name"]
-
+  repository     = "https://registry.terraform.io/modules/clouddrove/subnet/aws/0.14.0"
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
   type               = "public"
@@ -35,10 +28,6 @@ module "public_subnets" {
 module "vpn" {
   source      = "./../"
   name        = "vpn"
-  application = "clouddrove"
-  environment = "test"
-  label_order = ["environment", "application", "name"]
-
   vpc_id              = module.vpc.vpc_id
   customer_ip_address = "115.160.246.74"
 }
