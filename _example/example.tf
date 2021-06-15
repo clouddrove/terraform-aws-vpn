@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "git::https://github.com/clouddrove/terraform-aws-vpc.git?ref=0.15"
-  name   = "vpc"
+  source      = "git::https://github.com/clouddrove/terraform-aws-vpc.git?ref=0.15"
+  name        = "vpc"
   environment = "test"
   label_order = ["name", "environment"]
 
