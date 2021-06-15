@@ -10,8 +10,8 @@
 module "labels" {
   source  = "clouddrove/labels/aws"
   version = "0.15.0"
-  name        = var.name
- # application = clouddrove
+  name    = var.name
+  # application = clouddrove
   environment = var.environment
   managedby   = var.managedby
   label_order = var.label_order
