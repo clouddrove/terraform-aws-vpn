@@ -43,9 +43,8 @@ usage: |-
         source              = "clouddrove/vpn/aws"
         version             = "0.15.0"
         name                = "vpn"
-        application         = "clouddrove"
         environment         = "test"
-        label_order         = ["environment", "application", "name"]
+        label_order         = ["environment", "name"]
         vpc_id              = "vpc-xxxxxxxxxx"
         customer_ip_address = "115.160.246.74"
       }

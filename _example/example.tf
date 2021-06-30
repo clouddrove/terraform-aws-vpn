@@ -3,7 +3,9 @@ provider "aws" {
 }
 
 module "vpc" {
-  source      = "git::https://github.com/clouddrove/terraform-aws-vpc.git?ref=0.15"
+  source  = "clouddrove/vpc/aws"
+  version = "0.15.0"
+
   name        = "vpc"
   environment = "test"
   label_order = ["name", "environment"]
@@ -12,11 +14,10 @@ module "vpc" {
 }
 
 module "public_subnets" {
-  source = "git::https://github.com/clouddrove/terraform-aws-subnet.git?ref=0.15"
-
+  source  = "clouddrove/subnet/aws"
+  version = "0.15.0"
 
   name        = "public-subnet"
-  repository  = "https://registry.terraform.io/modules/clouddrove/subnet/aws/latest"
   environment = "test"
   label_order = ["environment", "name"]
 
@@ -31,10 +32,10 @@ module "public_subnets" {
 
 module "vpn" {
   source = "./../"
-  name   = "vpn"
-  # application = "clouddrove"
+
+  name        = "vpn"
   environment = "test"
-  # label_order = ["environment", "application", "name"]
+  label_order = ["environment", "name"]
 
   vpc_id              = module.vpc.vpc_id
   customer_ip_address = "115.160.246.74"
