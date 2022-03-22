@@ -51,7 +51,7 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 
 This module has a few dependencies: 
 
-- [Terraform 0.13](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Terraform 1.x.x](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [Go](https://golang.org/doc/install)
 - [github.com/stretchr/testify/assert](https://github.com/stretchr/testify)
 - [github.com/gruntwork-io/terratest/modules/terraform](https://github.com/gruntwork-io/terratest)
@@ -93,6 +93,7 @@ Here is an example of how you can use this module in your inventory structure:
 |------|-------------|------|---------|:--------:|
 | application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
 | attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
+| certificate\_arn | certificate\_arn (e.g. ''). | `string` | `""` | no |
 | customer\_ip\_address | The IP of the Customer Gateway. | `string` | n/a | yes |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
 | enable\_vpn\_connection | Set to false to prevent the creation of a VPN Connection. | `bool` | `true` | no |
