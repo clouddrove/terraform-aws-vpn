@@ -6,10 +6,17 @@ variable "name" {
   description = "Name  (e.g. `app` or `cluster`)."
 }
 
+
 variable "application" {
   type        = string
   default     = ""
   description = "Application (e.g. `cd` or `clouddrove`)."
+}
+
+variable "certificate_arn" {
+  type        = string
+  default     = ""
+  description = "certificate_arn (e.g. '')."
 }
 
 variable "environment" {

@@ -7,7 +7,7 @@ module "vpc" {
   version = "0.15.0"
 
   name        = "vpc"
-  environment = "test"
+  environment = var.environment
   label_order = ["name", "environment"]
 
   cidr_block = "172.16.0.0/16"
@@ -15,10 +15,10 @@ module "vpc" {
 
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "0.15.0"
+  version = "0.15.3"
 
   name        = "public-subnet"
-  environment = "test"
+  environment = var.environment
   label_order = ["environment", "name"]
 
   availability_zones = ["eu-west-1b", "eu-west-1c"]
@@ -34,7 +34,7 @@ module "vpn" {
   source = "./../"
 
   name        = "vpn"
-  environment = "test"
+  environment = var.environment
   label_order = ["environment", "name"]
 
   vpc_id              = module.vpc.vpc_id
