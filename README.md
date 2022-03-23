@@ -100,8 +100,10 @@ Here is an example of how you can use this module in your inventory structure:
 | enable\_vpn\_gateway\_attachment | Set to false to prevent attachment of the vGW to the VPC. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
+| local\_ipv4\_network\_cidr | n/a | `string` | `"0.0.0.0/0"` | no |
 | managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| remote\_ipv4\_network\_cidr | n/a | `string` | `"0.0.0.0/0"` | no |
 | tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(any)` | `{}` | no |
 | tunnel1\_inside\_cidr | The CIDR block of the inside IP addresses for the first VPN tunnel. | `string` | `""` | no |
 | tunnel1\_preshared\_key | The preshared key of the first VPN tunnel. | `string` | `""` | no |
