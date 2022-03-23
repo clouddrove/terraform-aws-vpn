@@ -25,6 +25,16 @@ variable "environment" {
   description = "Environment (e.g. `prod`, `dev`, `staging`)."
 }
 
+variable "local_ipv4_network_cidr" {
+  type    = string
+  default = "0.0.0.0/0"
+}
+
+variable "remote_ipv4_network_cidr" {
+  type    = string
+  default = "0.0.0.0/0"
+}
+
 variable "label_order" {
   type        = list(any)
   default     = []
