@@ -37,6 +37,8 @@ module "vpn" {
   environment = var.environment
   label_order = ["environment", "name"]
 
-  vpc_id              = module.vpc.vpc_id
-  customer_ip_address = "115.160.246.74"
+  vpc_id                   = module.vpc.vpc_id
+  customer_ip_address      = "115.160.246.74"
+  local_ipv4_network_cidr  = "0.0.0.0/0"
+  remote_ipv4_network_cidr = "0.0.0.0/0"
 }

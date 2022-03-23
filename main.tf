@@ -35,11 +35,13 @@ locals {
 resource "aws_vpn_connection" "default" {
   count = var.enable_vpn_connection && local.tunnel_details_not_specified ? 1 : 0
 
-  vpn_gateway_id      = join("", aws_vpn_gateway.vpn.*.id)
-  customer_gateway_id = join("", aws_customer_gateway.main.*.id)
-  type                = "ipsec.1"
-  static_routes_only  = var.vpn_connection_static_routes_only
-  tags                = module.labels.tags
+  vpn_gateway_id           = join("", aws_vpn_gateway.vpn.*.id)
+  customer_gateway_id      = join("", aws_customer_gateway.main.*.id)
+  type                     = "ipsec.1"
+  static_routes_only       = var.vpn_connection_static_routes_only
+  local_ipv4_network_cidr  = var.local_ipv4_network_cidr
+  remote_ipv4_network_cidr = var.remote_ipv4_network_cidr
+  tags                     = module.labels.tags
 }
 
 #Module       Gateway Attachment
