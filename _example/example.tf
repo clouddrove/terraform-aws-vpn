@@ -7,7 +7,7 @@ module "vpc" {
   version = "0.15.0"
 
   name        = "vpc"
-  environment = var.environment
+  environment = "Dev"
   label_order = ["name", "environment"]
 
   cidr_block = "172.16.0.0/16"
@@ -18,7 +18,7 @@ module "public_subnets" {
   version = "0.15.3"
 
   name        = "public-subnet"
-  environment = var.environment
+  environment = "Dev"
   label_order = ["environment", "name"]
 
   availability_zones = ["eu-west-1b", "eu-west-1c"]
@@ -34,7 +34,7 @@ module "vpn" {
   source = "./../"
 
   name        = "vpn"
-  environment = var.environment
+  environment = "Dev"
   label_order = ["environment", "name"]
 
   vpc_id                   = module.vpc.vpc_id
