@@ -9,7 +9,7 @@
 #              naming convention.
 module "labels" {
   source  = "clouddrove/labels/aws"
-  version = "0.15.0"
+  version = "1.0.1"
 
   name        = var.name
   environment = var.environment
