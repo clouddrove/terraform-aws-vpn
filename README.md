@@ -79,7 +79,7 @@ Here is an example of how you can use this module in your inventory structure:
   ```hcl
   module "vpn" {
       source              = "clouddrove/vpn/aws"
-      version             = "0.15.0"
+      version             = "1.0.1"
       name                = "vpn"
       environment         = "test"
       label_order         = ["environment", "name"]
