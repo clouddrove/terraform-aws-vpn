@@ -107,13 +107,25 @@ Here is an example of how you can use this module in your inventory structure:
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | local\_ipv4\_network\_cidr | n/a | `string` | `"0.0.0.0/0"` | no |
+| log\_enabled | (Optional) Enable or disable VPN tunnel logging feature. The default is false.yy | `bool` | `true` | no |
+| log\_output\_format | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | <pre>[<br>  "json"<br>]</pre> | no |
 | managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | remote\_ipv4\_network\_cidr | n/a | `string` | `"0.0.0.0/0"` | no |
 | tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(any)` | `{}` | no |
+| tunnel1\_dpd\_timeout\_action | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `""` | no |
+| tunnel1\_ike\_versions | (Optional) The IKE versions that are permitted for the first VPN tunnel. Valid values are ikev1 \| ikev2. | `list(string)` | n/a | yes |
 | tunnel1\_inside\_cidr | The CIDR block of the inside IP addresses for the first VPN tunnel. | `string` | `""` | no |
+| tunnel1\_phase1\_dh\_group\_numbers  | (Optional) List of one or more Diffie-Hellman group numbers that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are 2 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \| 22 \| 23 \| 24. | `list(number)` | <pre>[<br>  ""<br>]</pre> | no |
+| tunnel1\_phase1\_encryption\_algorithms | (Optional) List of one or more encryption algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 \| AES256 \| AES128-GCM-16 \| AES256-GCM-16. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| tunnel1\_phase1\_integrity\_algorithms | Optional) One or more integrity algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 \| SHA2-256 \| SHA2-384 \| SHA2-512. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| tunnel1\_phase2\_dh\_group\_numbers  | (Optional) List of one or more Diffie-Hellman group numbers that are permitted for the first VPN tunnel for phase 2 IKE negotiations. Valid values are 2 \| 5 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \| 22 \| 23 \| 24 | `list(number)` | <pre>[<br>  ""<br>]</pre> | no |
 | tunnel1\_preshared\_key | The preshared key of the first VPN tunnel. | `string` | `""` | no |
+| tunnel1\_startup\_action | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `""` | no |
 | tunnel2\_inside\_cidr | The CIDR block of the inside IP addresses for the second VPN tunnel. | `string` | `""` | no |
+| tunnel2\_phase1\_dh\_group\_numbers  | (Optional) List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are 2 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \| 22 \| 23 \| 24. | `list(number)` | <pre>[<br>  ""<br>]</pre> | no |
+| tunnel2\_phase1\_integrity\_algorithms | (Optional) One or more integrity algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 \| SHA2-256 \| SHA2-384 \| SHA2-512. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
+| tunnel2\_phase2\_dh\_group\_numbers  | (Optional) List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are 2 \| 5 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \| 22 \| 23 \| 24. | `list(number)` | <pre>[<br>  ""<br>]</pre> | no |
 | tunnel2\_preshared\_key | The preshared key of the second VPN tunnel. | `string` | `""` | no |
 | vpc\_id | The id of the VPC where the VPN Gateway lives. | `string` | n/a | yes |
 | vpc\_subnet\_route\_table\_count | The number of subnet route table ids being passed in via `vpc_subnet_route_table_ids`. | `string` | `0` | no |
