@@ -9,13 +9,12 @@
 #              naming convention.
 module "labels" {
   source  = "clouddrove/labels/aws"
-  version = "0.15.0"
+  version = "1.3.0"
 
   name        = var.name
   environment = var.environment
-  managedby   = var.managedby
   label_order = var.label_order
-  enabled     = var.enable_vpn_connection
+  managedby   = var.managedby
 }
 
 locals {
