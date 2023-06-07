@@ -118,7 +118,7 @@ variable "vpn_connection_static_routes_destinations" {
 
 variable "tunnel1_inside_cidr" {
   type        = string
-  default     = ""
+  default     = "169.254.185.48/30"
   description = "The CIDR block of the inside IP addresses for the first VPN tunnel."
 }
 
