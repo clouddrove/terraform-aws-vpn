@@ -6,13 +6,6 @@ variable "name" {
   description = "Name  (e.g. `app` or `cluster`)."
 }
 
-
-variable "application" {
-  type        = string
-  default     = ""
-  description = "Application (e.g. `cd` or `clouddrove`)."
-}
-
 variable "certificate_arn" {
   type        = string
   default     = ""
@@ -39,24 +32,6 @@ variable "label_order" {
   type        = list(any)
   default     = []
   description = "Label order, e.g. `name`,`application`."
-}
-
-variable "attributes" {
-  type        = list(any)
-  default     = []
-  description = "Additional attributes (e.g. `1`)."
-}
-
-variable "delimiter" {
-  type        = string
-  default     = "-"
-  description = "Delimiter to be used between `organization`, `environment`, `name` and `attributes`."
-}
-
-variable "tags" {
-  type        = map(any)
-  default     = {}
-  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
 }
 
 variable "managedby" {
@@ -206,71 +181,4 @@ variable "enable_vpn_gateway_attachment" {
   type        = bool
   default     = true
   description = "Set to false to prevent attachment of the vGW to the VPC."
-}
-
-variable "tunnel2_phase1_encryption_algorithms" {
-  type        = list(string)
-  default     = null
-  description = "(Optional) List of one or more encryption algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
-}
-
-variable "tunnel2_phase2_encryption_algorithms" {
-  type        = list(string)
-  default     = null
-  description = "(Optional) List of one or more encryption algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
-}
-
-variable "tunnel2_phase1_integrity_algorithms" {
-  type        = list(string)
-  default     = [""]
-  description = "(Optional) One or more integrity algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
-}
-
-variable "tunnel2_phase2_integrity_algorithms" {
-  type        = list(string)
-  default     = [""]
-  description = "(Optional) One or more integrity algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
-}
-
-
-variable "tunnel2_phase1_dh_group_numbers" {
-  type        = list(number)
-  default     = null
-  description = "(Optional) List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are 2 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24."
-}
-
-variable "tunnel2_phase2_dh_group_numbers" {
-  type        = list(number)
-  default     = null
-  description = "(Optional) List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are 2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24."
-}
-
-variable "tunnel2_ike_versions" {
-  type        = list(string)
-  default     = null
-  description = "(Optional) The IKE versions that are permitted for the first VPN tunnel. Valid values are ikev1 | ikev2."
-}
-
-variable "tunnel2_dpd_timeout_action" {
-  type        = string
-  default     = ""
-  description = "(Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear | none | restart."
-}
-
-variable "tunnel2_startup_action" {
-  type        = string
-  default     = ""
-  description = "(Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear | none | restart."
-}
-
-variable "log_enabled" {
-  type        = bool
-  default     = true
-  description = "(Optional) Enable or disable VPN tunnel logging feature. The default is false.yy"
-}
-
-variable "log_output_format" {
-  type        = string
-  default     = null
-  description = "(Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear | none | restart."
 }
