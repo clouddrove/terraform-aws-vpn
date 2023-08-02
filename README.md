@@ -13,17 +13,14 @@
 
 <p align="center">
 
-<a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v1.1.7-green" alt="Terraform">
-</a>
-<a href="LICENSE.md">
-  <img src="https://img.shields.io/badge/License-APACHE-blue.svg" alt="Licence">
+<a href="https://github.com/clouddrove/terraform-aws-vpn/releases/latest">
+  <img src="https://img.shields.io/github/release/clouddrove/terraform-aws-vpn.svg" alt="Latest Release">
 </a>
 <a href="https://github.com/clouddrove/terraform-aws-vpn/actions/workflows/tfsec.yml">
   <img src="https://github.com/clouddrove/terraform-aws-vpn/actions/workflows/tfsec.yml/badge.svg" alt="tfsec">
 </a>
-<a href="https://github.com/clouddrove/terraform-aws-vpn/actions/workflows/terraform.yml">
-  <img src="https://github.com/clouddrove/terraform-aws-vpn/actions/workflows/terraform.yml/badge.svg" alt="static-checks">
+<a href="LICENSE.md">
+  <img src="https://img.shields.io/badge/License-APACHE-blue.svg" alt="Licence">
 </a>
 
 
@@ -56,12 +53,6 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 ## Prerequisites
 
 This module has a few dependencies: 
-
-- [Terraform 1.x.x](https://learn.hashicorp.com/terraform/getting-started/install.html)
-- [Go](https://golang.org/doc/install)
-- [github.com/stretchr/testify/assert](https://github.com/stretchr/testify)
-- [github.com/gruntwork-io/terratest/modules/terraform](https://github.com/gruntwork-io/terratest)
-
 
 
 
@@ -100,22 +91,16 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
-| attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
 | certificate\_arn | certificate\_arn (e.g. ''). | `string` | `""` | no |
 | customer\_ip\_address | The IP of the Customer Gateway. | `string` | n/a | yes |
-| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
 | enable\_vpn\_connection | Set to false to prevent the creation of a VPN Connection. | `bool` | `true` | no |
 | enable\_vpn\_gateway\_attachment | Set to false to prevent attachment of the vGW to the VPC. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | local\_ipv4\_network\_cidr | n/a | `string` | `"0.0.0.0/0"` | no |
-| log\_enabled | (Optional) Enable or disable VPN tunnel logging feature. The default is false.yy | `bool` | `true` | no |
-| log\_output\_format | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `null` | no |
 | managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | remote\_ipv4\_network\_cidr | n/a | `string` | `"0.0.0.0/0"` | no |
-| tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(any)` | `{}` | no |
 | tunnel1\_dpd\_timeout\_action | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `"none"` | no |
 | tunnel1\_ike\_versions | (Optional) The IKE versions that are permitted for the first VPN tunnel. Valid values are ikev1 \| ikev2. | `list(string)` | `null` | no |
 | tunnel1\_inside\_cidr | The CIDR block of the inside IP addresses for the first VPN tunnel. | `string` | `"169.254.1.0/30"` | no |
@@ -127,17 +112,8 @@ Here is an example of how you can use this module in your inventory structure:
 | tunnel1\_phase2\_integrity\_algorithms | Optional) One or more integrity algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 \| SHA2-256 \| SHA2-384 \| SHA2-512. | `list(string)` | <pre>[<br>  "SHA1"<br>]</pre> | no |
 | tunnel1\_preshared\_key | The preshared key of the first VPN tunnel. | `string` | `"123456789"` | no |
 | tunnel1\_startup\_action | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `"add"` | no |
-| tunnel2\_dpd\_timeout\_action | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `""` | no |
-| tunnel2\_ike\_versions | (Optional) The IKE versions that are permitted for the first VPN tunnel. Valid values are ikev1 \| ikev2. | `list(string)` | `null` | no |
 | tunnel2\_inside\_cidr | The CIDR block of the inside IP addresses for the second VPN tunnel. | `string` | `""` | no |
-| tunnel2\_phase1\_dh\_group\_numbers | (Optional) List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are 2 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \| 22 \| 23 \| 24. | `list(number)` | `null` | no |
-| tunnel2\_phase1\_encryption\_algorithms | (Optional) List of one or more encryption algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 \| AES256 \| AES128-GCM-16 \| AES256-GCM-16. | `list(string)` | `null` | no |
-| tunnel2\_phase1\_integrity\_algorithms | (Optional) One or more integrity algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 \| SHA2-256 \| SHA2-384 \| SHA2-512. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
-| tunnel2\_phase2\_dh\_group\_numbers | (Optional) List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are 2 \| 5 \| 14 \| 15 \| 16 \| 17 \| 18 \| 19 \| 20 \| 21 \| 22 \| 23 \| 24. | `list(number)` | `null` | no |
-| tunnel2\_phase2\_encryption\_algorithms | (Optional) List of one or more encryption algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 \| AES256 \| AES128-GCM-16 \| AES256-GCM-16. | `list(string)` | `null` | no |
-| tunnel2\_phase2\_integrity\_algorithms | (Optional) One or more integrity algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 \| SHA2-256 \| SHA2-384 \| SHA2-512. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | tunnel2\_preshared\_key | The preshared key of the second VPN tunnel. | `string` | `""` | no |
-| tunnel2\_startup\_action | (Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear \| none \| restart. | `string` | `""` | no |
 | vpc\_id | The id of the VPC where the VPN Gateway lives. | `string` | n/a | yes |
 | vpc\_subnet\_route\_table\_count | The number of subnet route table ids being passed in via `vpc_subnet_route_table_ids`. | `string` | `0` | no |
 | vpc\_subnet\_route\_table\_ids | The ids of the VPC subnets for which routes from the VPN Gateway will be propagated. | `list(string)` | `[]` | no |
