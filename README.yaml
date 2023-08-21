@@ -26,6 +26,9 @@ badges:
     image: "https://img.shields.io/badge/License-APACHE-blue.svg"
     url: "LICENSE.md"
 
+prerequesties:
+  - name: Terraform 1.5.3
+    url: https://learn.hashicorp.com/terraform/getting-started/install.html
 #  description of this project
 description: |-
   Terraform module is used to create VPN resource on AWS for network connectivity..
@@ -39,17 +42,15 @@ include:
 usage: |-
   ### Simple Example
   Here is an example of how you can use this module in your inventory structure:
-    ```hcl
+  ```hcl
     module "vpn" {
-        source              = "clouddrove/vpn/aws"
-        version             = "1.0.4"
-        name        = "vpn"
-        environment = "Dev"
-        label_order = ["environment", "name"]
-      
+        source                   = "clouddrove/vpn/aws"
+        version                  = "1.0.4"
+        name                     = "vpn"
+        environment              = "test"
         vpc_id                   = module.vpc.vpc_id
         customer_ip_address      = "115.160.246.74"
         local_ipv4_network_cidr  = "0.0.0.0/0"
         remote_ipv4_network_cidr = "0.0.0.0/0"
-      }
-    ```
+    }
+  ```
