@@ -2,14 +2,19 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+locals {
+  name        = "app"
+  environment = "test"
+}
+
 ##-----------------------------------------------------------------------------
 ## A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.
 ##-----------------------------------------------------------------------------
 module "vpc" {
   source      = "clouddrove/vpc/aws"
   version     = "2.0.0"
-  name        = "vpc"
-  environment = "test"
+  name        = local.name
+  environment = local.environment
   cidr_block  = "172.16.0.0/16"
 }
 
@@ -20,9 +25,8 @@ module "public_subnets" {
   source  = "clouddrove/subnet/aws"
   version = "2.0.0"
 
-  name               = "public-subnet"
-  environment        = "test"
-  label_order        = ["environment", "name"]
+  name               = local.name
+  environment        = local.environment
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
   type               = "public"
@@ -37,8 +41,8 @@ module "public_subnets" {
 module "vpn" {
   source = "./../"
 
-  name                                      = "vpn"
-  environment                               = "test"
+  name                                      = local.name
+  environment                               = local.environment
   vpc_id                                    = module.vpc.vpc_id
   customer_ip_address                       = "115.160.246.74"
   local_ipv4_network_cidr                   = "0.0.0.0/0"
