@@ -1,8 +1,10 @@
-##----------------------------------------------------------------------------------
-## Provider block added, Use the Amazon Web Services (AWS) provider to interact with the many resources supported by AWS.
-##----------------------------------------------------------------------------------
 provider "aws" {
   region = "eu-west-1"
+}
+
+locals {
+  name        = "app"
+  environment = "test"
 }
 
 ##-----------------------------------------------------------------------------
@@ -11,11 +13,9 @@ provider "aws" {
 module "vpc" {
   source      = "clouddrove/vpc/aws"
   version     = "2.0.0"
-  name        = "vpc"
-  environment = "Dev"
-  label_order = ["name", "environment"]
-
-  cidr_block = "172.16.0.0/16"
+  name        = local.name
+  environment = local.environment
+  cidr_block  = "172.16.0.0/16"
 }
 
 ##-----------------------------------------------------
@@ -25,10 +25,8 @@ module "public_subnets" {
   source  = "clouddrove/subnet/aws"
   version = "2.0.0"
 
-  name        = "public-subnet"
-  environment = "Dev"
-  label_order = ["environment", "name"]
-
+  name               = local.name
+  environment        = local.environment
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
   type               = "public"
@@ -43,12 +41,12 @@ module "public_subnets" {
 module "vpn" {
   source = "./../"
 
-  name        = "vpn"
-  environment = "Dev"
-  label_order = ["environment", "name"]
+  name                                      = local.name
+  environment                               = local.environment
+  vpc_id                                    = module.vpc.vpc_id
+  customer_ip_address                       = "115.160.246.74"
+  local_ipv4_network_cidr                   = "0.0.0.0/0"
+  remote_ipv4_network_cidr                  = module.vpc.vpc_cidr_block
+  vpn_connection_static_routes_destinations = ["10.80.1.0/24"]
 
-  vpc_id                   = module.vpc.vpc_id
-  customer_ip_address      = "115.160.246.74"
-  local_ipv4_network_cidr  = "0.0.0.0/0"
-  remote_ipv4_network_cidr = "0.0.0.0/0"
 }

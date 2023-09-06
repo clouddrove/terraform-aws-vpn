@@ -33,3 +33,8 @@ output "tags" {
   value       = module.labels.tags
   description = "A mapping of tags to assign to the resource."
 }
+
+output "vpn_connection_tunnel1_cgw_inside_address" {
+  value       = try(aws_vpn_connection.default[0].tunnel1_cgw_inside_address)
+  description = "A list with the the RFC 6890 link-local address of the first VPN tunnel (Customer Gateway Side) if `create_vpn_connection = true`, or empty otherwise"
+}
