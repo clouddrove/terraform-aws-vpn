@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.0.0] - 2023-10-25
+### :sparkles: New Features
+- [`e30efd4`](https://github.com/clouddrove/terraform-aws-vpn/commit/e30efd464545143006474966997d2094ac68c34d) - auto changelog action added *(commit by [@mamrajyadav](https://github.com/mamrajyadav))*
+- [`23be830`](https://github.com/clouddrove/terraform-aws-vpn/commit/23be830c69ad6eac5388c20a1a7eb8cc3d945025) - added dependabot.yml file *(commit by [@mamrajyadav](https://github.com/mamrajyadav))*
+- [`5e40fca`](https://github.com/clouddrove/terraform-aws-vpn/commit/5e40fca1901b92afa9eac81a3baeb2885f8a973e) - updated changelog.yml name and file *(commit by [@vibhutigoyal](https://github.com/vibhutigoyal))*
+- [`36d3f2f`](https://github.com/clouddrove/terraform-aws-vpn/commit/36d3f2f8200349a20df91070bda6f2b8ea9db011) - add deepsource & added assignees,reviewer in dependabot *(commit by [@Tanveer143s](https://github.com/Tanveer143s))*
+- [`6991da5`](https://github.com/clouddrove/terraform-aws-vpn/commit/6991da516219aa422d2a7c27adfb125196b9ba71) - update new github-action and subnet vpc tag *(commit by [@theprashantyadav](https://github.com/theprashantyadav))*
+- [`ad40ae6`](https://github.com/clouddrove/terraform-aws-vpn/commit/ad40ae610f4c3b50e8aa29c88c1bfc618d45c01d) - update new github-action and subnet vpc tag *(commit by [@theprashantyadav](https://github.com/theprashantyadav))*
+
+### :bug: Bug Fixes
+- [`b045221`](https://github.com/clouddrove/terraform-aws-vpn/commit/b0452210842386326654a29c2f44e0cffbe3ad5b) - added versions.tf and updated vpc tag *(commit by [@mamrajyadav](https://github.com/mamrajyadav))*
+
+
 ## [1.0.4] - 2022-10-06
 ### :bug: Bug Fixes
 - [`4e0e8ae`](https://github.com/clouddrove/terraform-aws-vpn/commit/4e0e8ae5247d7749fd4f0e93df28530863933464) - update workflows
@@ -74,3 +87,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.2]: https://github.com/clouddrove/terraform-aws-vpn/compare/1.0.2...master
 [1.0.3]: https://github.com/clouddrove/terraform-aws-vpn/compare/1.0.3...master
 [1.0.4]: https://github.com/clouddrove/terraform-aws-vpn/compare/1.0.4...master
+[2.0.0]: https://github.com/clouddrove/terraform-aws-vpn/compare/1.0.4...2.0.0
