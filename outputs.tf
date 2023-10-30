@@ -9,9 +9,9 @@ output "vpn_connection_id" {
 }
 
 output "gateway_attachment_id" {
-  value = concat(
+  value = var.create_virtual_private_gateway ? concat(
     aws_vpn_gateway_attachment.default[*].id
-  )[0]
+  )[0] : "n/a"
   description = "The ID of the Gateway Attachment."
 }
 
@@ -23,9 +23,9 @@ output "customer_gateway_id" {
 }
 
 output "vpn_gateway_id" {
-  value = concat(
+  value = var.create_virtual_private_gateway ? concat(
     aws_vpn_gateway.vpn[*].id
-  )[0]
+  )[0] : var.create_virtual_private_gateway
   description = "The ID of the VPN gateway."
 }
 
