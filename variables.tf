@@ -84,6 +84,17 @@ variable "vpn_connection_static_routes_destinations" {
   description = "List of CIDRs to be used as destination for static routes (used with `vpn_connection_static_routes_only = true`). Routes to destinations set here will be propagated to the routing tables of the subnets defined in `vpc_subnet_route_table_ids`."
 }
 
+variable "virtual_private_gateway_id" {
+  type        = string
+  default     = null
+  description = "Provide id of existing Virtual Private Gateway"
+}
+
+variable "create_virtual_private_gateway" {
+  type        = bool
+  default     = true
+  description = "Set this to false to use existing Virtual Private Gateway(vgw) and prevent creation of vgw"
+}
 
 ###########################################################################################################################################
 ## tunnel 1

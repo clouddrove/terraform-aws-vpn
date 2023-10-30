@@ -25,7 +25,7 @@ locals {
 resource "aws_vpn_connection" "default" {
   count = var.enable_vpn_connection && local.tunnel_details_not_specified ? 1 : 0
 
-  vpn_gateway_id                          = join("", aws_vpn_gateway.vpn[*].id)
+  vpn_gateway_id                          = var.virtual_private_gateway_id != null ? var.virtual_private_gateway_id : join("", aws_vpn_gateway.vpn[*].id)
   customer_gateway_id                     = join("", aws_customer_gateway.main[*].id)
   transit_gateway_id                      = var.transit_gateway_id
   type                                    = var.vpn_connection_type
@@ -106,9 +106,9 @@ resource "aws_vpn_connection" "default" {
 ## Provides a Virtual Private Gateway attachment resource, allowing for an existing hardware VPN gateway to be attached and/or detached from a VPC
 ##-----------------------------------------------------------------------------
 resource "aws_vpn_gateway_attachment" "default" {
-  count          = var.enable_vpn_connection && var.enable_vpn_gateway_attachment ? 1 : 0
+  count          = var.enable_vpn_connection && var.create_virtual_private_gateway && var.enable_vpn_gateway_attachment ? 1 : 0
   vpc_id         = var.vpc_id
-  vpn_gateway_id = join("", aws_vpn_gateway.vpn[*].id)
+  vpn_gateway_id = var.virtual_private_gateway_id != null ? var.virtual_private_gateway_id : join("", aws_vpn_gateway.vpn[*].id)
 }
 
 ##-----------------------------------------------------------------------------
@@ -150,7 +150,7 @@ resource "aws_customer_gateway" "main" {
 ## VPN gateways provide secure connectivity between multiple sites, such as on-premises data centers, Google Cloud Virtual Private Cloud (VPC) networks, and Google Cloud VMware Engine private clouds.
 ##-----------------------------------------------------------------------------
 resource "aws_vpn_gateway" "vpn" {
-  count           = var.enable_vpn_connection && var.enable_vpn_gateway_attachment ? 1 : 0
+  count           = var.enable_vpn_connection && var.enable_vpn_gateway_attachment && var.create_virtual_private_gateway ? 1 : 0
   vpc_id          = var.vpc_id
   amazon_side_asn = var.vpn_gateway_amazon_side_asn
 
