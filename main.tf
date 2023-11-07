@@ -65,7 +65,7 @@ resource "aws_vpn_connection" "default" {
   tunnel2_rekey_margin_time_seconds       = var.tunnel2_rekey_margin_time_seconds
   tunnel2_replay_window_size              = var.tunnel2_replay_window_size
   tunnel2_startup_action                  = var.tunnel2_startup_action
-  tunnel2_phase1_encryption_algorithms    = ar.tunnel2_phase1_encryption_algorithms
+  tunnel2_phase1_encryption_algorithms    = var.tunnel2_phase1_encryption_algorithms
   tunnel2_ike_versions                    = var.tunnel2_ike_versions
   tunnel2_phase1_dh_group_numbers         = var.tunnel2_phase1_dh_group_numbers
 
