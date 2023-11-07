@@ -299,7 +299,19 @@ variable "tunnel2_phase2_dh_group_numbers" {
 variable "tunnel2_phase2_encryption_algorithms" {
   type        = list(string)
   default     = null
+  description = "(Optional) List of one or more encryption algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
+}
+
+variable "tunnel2_phase2_encryption_algorithms" {
+  type        = list(string)
+  default     = null
   description = "(Optional) List of one or more encryption algorithms that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16"
+}
+
+variable "tunnel2_phase1_integrity_algorithms" {
+  type        = list(string)
+  default     = ["SHA1"]
+  description = "Optional) One or more integrity algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
 }
 
 variable "tunnel2_phase2_integrity_algorithms" {
