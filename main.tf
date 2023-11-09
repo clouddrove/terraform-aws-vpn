@@ -58,12 +58,14 @@ resource "aws_vpn_connection" "default" {
   tunnel2_enable_tunnel_lifecycle_control = var.tunnel2_enable_tunnel_lifecycle_control
   tunnel2_phase2_dh_group_numbers         = var.tunnel2_phase2_dh_group_numbers
   tunnel2_phase2_encryption_algorithms    = var.tunnel2_phase2_encryption_algorithms
+  tunnel2_phase1_integrity_algorithms     = var.tunnel2_phase1_integrity_algorithms
   tunnel2_phase2_integrity_algorithms     = var.tunnel2_phase2_integrity_algorithms
   tunnel2_phase2_lifetime_seconds         = var.tunnel2_phase2_lifetime_seconds
   tunnel2_rekey_fuzz_percentage           = var.tunnel2_rekey_fuzz_percentage
   tunnel2_rekey_margin_time_seconds       = var.tunnel2_rekey_margin_time_seconds
   tunnel2_replay_window_size              = var.tunnel2_replay_window_size
   tunnel2_startup_action                  = var.tunnel2_startup_action
+  tunnel2_phase1_encryption_algorithms    = var.tunnel2_phase1_encryption_algorithms
   tunnel2_ike_versions                    = var.tunnel2_ike_versions
   tunnel2_phase1_dh_group_numbers         = var.tunnel2_phase1_dh_group_numbers
 
