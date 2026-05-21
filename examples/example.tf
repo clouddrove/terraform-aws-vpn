@@ -12,7 +12,7 @@ locals {
 ##-----------------------------------------------------------------------------
 module "vpc" {
   source      = "clouddrove/vpc/aws"
-  version     = "2.0.3"
+  version     = "2.0.4"
   name        = local.name
   environment = local.environment
   cidr_block  = "172.16.0.0/16"
