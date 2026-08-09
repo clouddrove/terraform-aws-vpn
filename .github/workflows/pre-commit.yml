@@ -1,3 +1,4 @@
+---
 name: pre-commit
 on:
   pull_request:
@@ -13,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v4
+        uses: hashicorp/setup-terraform@v3
 
       - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v6
+        uses: terraform-linters/setup-tflint@v4
         with:
           tflint_version: ${{ env.TFLINT_VERSION }}
 
@@ -35,3 +36,4 @@ jobs:
 
       - name: Run pre-commit
         run: SKIP=terraform_validate,terraform_tflint pre-commit run -a --show-diff-on-failure || true
+...

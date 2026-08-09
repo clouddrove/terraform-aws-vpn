@@ -1,16 +1,17 @@
 ---
 name: tf-checks
+
 permissions:
   id-token: write
   contents: read
+
 on:
   pull_request:
     paths:
       - '**/*.tf'
       - '*.tf'
 jobs:
-  example:
-    if: github.actor != 'dependabot[bot]'
+  individual:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@master
     with:
       working_directory: './examples/'
